@@ -31,4 +31,3 @@ El __primer diseño__ de la aplicación que hicimos fue el siguiente:
 </div>
 
 Podemos ver una imagen que muestra el __personaje a acertar__. Al empezar a introducir un _nombre_, mostrará la lista de nombres que __coinciden con lo introducido__ y se podrá seleccionar la opción que se desee.
-
