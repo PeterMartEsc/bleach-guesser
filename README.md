@@ -24,10 +24,20 @@ En este repositorio realizaremos el trabajo final para la asignatura de __Desarr
 
 ### Diseño Previo <a name="diseño"></a>
 
-El __primer diseño__ de la aplicación que hicimos fue el siguiente:
+El __primer diseño__ de la aplicación que hicimos fue el siguiente wireframe:
 
 <div align=center>
     <img src="./resources/wireframe-simple.png" width=500>
 </div>
 
+Y el mockup:
+
+<div align=center>
+    <img src="./resources/Mockup.png" width=500>
+</div>
+
 Podemos ver una imagen que muestra el __personaje a acertar__. Al empezar a introducir un _nombre_, mostrará la lista de nombres que __coinciden con lo introducido__ y se podrá seleccionar la opción que se desee.
+
+### Codigo
+
+Comenzamos
