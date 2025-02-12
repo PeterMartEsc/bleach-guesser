@@ -1,15 +1,11 @@
 <template>
   <div>
-    <p>La app funciona</p>
+    <p>Componente Input del Personaje</p>
   </div>
-
-  <BleachGuesserGameVue/>
-
 </template>
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import type BleachGuesserGameVue from './views/BleachGuesserGame.vue';
 
 </script>
 
