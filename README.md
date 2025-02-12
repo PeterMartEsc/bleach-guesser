@@ -16,7 +16,7 @@ __Autores: Alejandro Tomás Pacheco Rodríguez, Melissa Ruiz González, Pedro Ma
 
     - [Mockup]()
 
-- [Pasos del codigo]()
+- [Pasos del codigo](#code)
 
 ### Introducción <a name="intro"></a>
 
@@ -38,6 +38,6 @@ Y el mockup:
 
 Podemos ver una imagen que muestra el __personaje a acertar__. Al empezar a introducir un _nombre_, mostrará la lista de nombres que __coinciden con lo introducido__ y se podrá seleccionar la opción que se desee.
 
-### Codigo
+### Pasos del codigo <a name="code"></a>
 
 Comenzamos
