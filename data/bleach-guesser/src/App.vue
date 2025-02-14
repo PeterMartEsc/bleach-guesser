@@ -1,17 +1,11 @@
+<script setup>
+import GuessGame from "@/components/bleach/GuessGame.vue";
+</script>
+
 <template>
-  <div>
-    <p>La app funciona</p>
-  </div>
-
-  <BleachGuesserGameVue/>
-
+  <GuessGame />
 </template>
 
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import type BleachGuesserGameVue from './views/BleachGuesserGame.vue';
-
-</script>
 
 <style scoped>
 
