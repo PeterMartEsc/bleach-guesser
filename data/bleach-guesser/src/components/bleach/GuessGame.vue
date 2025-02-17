@@ -1,5 +1,11 @@
 <template>
-    <div class="container">
+  <div class="container">
+    <header class="header">
+      <div class="bg-[#ccc]">
+        <h1 class="text-black">Bleach Guesser</h1>
+      </div>
+    </header>
+    <br>
       <h1>🔍 Adivina el Personaje de Bleach</h1>
       <div v-if="currentCharacter" class="character-container">
         <img :src="currentCharacter.character.images.jpg.image_url" alt="Personaje" class="character-image"/>
@@ -10,13 +16,13 @@
             @input="showSuggestions = true"
             @keyup.enter="checkGuess"
           />
-          <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions">
-            <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)">
+          <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
+            <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
               {{ name }}
             </li>
           </ul>
         </div>
-        <button @click="checkGuess">Adivinar</button>
+        <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
         <p :class="{ correct: message.includes('Correcto'), incorrect: message.includes('Incorrecto') }">
           {{ message }}
         </p>
