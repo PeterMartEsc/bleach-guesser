@@ -61,8 +61,8 @@
 
         message.value = "";
         userGuess.value = "";
+        titles = []; 
         titles.push(title.value);
-        console.log(genres);
         fetchMangas()
       } catch (error) {
         console.error("Error fetching characters:", error);
@@ -105,7 +105,7 @@
     const filteredSuggestions = computed(() => {
       if (!userGuess.value) return [];
       return titles
-        .filter((name) => name.toLowerCase().includes(userGuess.value.toLowerCase()))
+        .filter((name) => name.toLowerCase().startsWith(userGuess.value.toLowerCase()))
         .slice(0, 5);
     });
 
