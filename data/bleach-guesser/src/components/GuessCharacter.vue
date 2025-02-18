@@ -87,7 +87,7 @@
     const filteredSuggestions = computed(() => {
       if (!userGuess.value) return [];
       return characters
-        .filter((name) => name.toLowerCase().includes(userGuess.value.toLowerCase()))
+        .filter((name) => name.toLowerCase().startsWith(userGuess.value.toLowerCase()))
         .slice(0, 5);
     });
 
