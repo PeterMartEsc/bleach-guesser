@@ -3,7 +3,13 @@
       <header class="header">
             <div class="bg-[#ccc]">
             <h1 class="text-black">Manga Guesser</h1>
-            </div>
+        </div>
+            <nav>
+                <RouterLink to="/">Home</RouterLink><br>
+                <RouterLink to="/anime">Adivina el anime</RouterLink><br>
+                <RouterLink to="/manga">Adivina el manga</RouterLink><br>
+                <RouterLink to="/character">Adivina el personaje</RouterLink>
+        </nav>
         </header>
         <br>
         <div v-if="titles" class="character-container">

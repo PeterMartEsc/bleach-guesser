@@ -1,16 +1,22 @@
 <template>
     <div class="container">
-      <header class="header">
-        <div class="bg-[#ccc]">
-          <h1 class="text-black">Anime Guesser</h1>
-        </div>
+        <header class="header">
+            <div class="bg-[#ccc]">
+                <h1 class="text-black">Anime Guesser</h1>
+            </div>
+            <nav>
+                <RouterLink to="/">Home</RouterLink><br>
+                <RouterLink to="/anime">Adivina el anime</RouterLink><br>
+                <RouterLink to="/manga">Adivina el manga</RouterLink><br>
+                <RouterLink to="/character">Adivina el personaje</RouterLink>
+        </nav>
     </header>
     <br>
     <div v-if="titles" class="character-container">
         <img :src="images" class="character-image"/>
-        <p style="color: rgb(0, 0, 0);">{{ titles }} </p>
+        <p class="text-white">{{ titles }} </p>
         </div>
-        <p v-else>Cargando personajes...</p>
+        <p v-else>Cargando</p>
       </div>
     </template>
 
@@ -19,11 +25,8 @@
     import "@/assets/guesser.css";
 
     const apiUrl = "https://api.jikan.moe/v4/random/anime";
-    const characters = ref([]);
     const images = ref("");
     const titles = ref("");
-    const currentCharacter = ref(null);
-    const showSuggestions = ref(false);
 
     async function fetchRandomAnime() {
       try {
