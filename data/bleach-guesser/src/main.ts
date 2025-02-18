@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 
 import { createRouter, createMemoryHistory} from 'vue-router';
 import App from './App.vue'
-import Home from '@/components/Home.vue';
+import Home from '@/views/Home.vue';
 import GuessAnime from './components/GuessAnime.vue';
 import GuessManga from './components/GuessManga.vue';
 import GuessCharacter from './components/GuessCharacter.vue';
