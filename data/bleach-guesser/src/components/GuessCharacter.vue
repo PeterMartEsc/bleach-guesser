@@ -10,9 +10,9 @@
         <div v-if="currentCharacter" class="character-container">
           <img :src="currentCharacter.character.images.jpg.image_url" alt="Personaje" class="character-image"/>
           <div class="input-container">
-            <input 
-              v-model="userGuess" 
-              placeholder="Escribe el nombre..." 
+            <input
+              v-model="userGuess"
+              placeholder="Escribe el nombre..."
               @input="showSuggestions = true"
               @keyup.enter="checkGuess"
             />
@@ -30,36 +30,41 @@
         <p v-else>Cargando personajes...</p>
       </div>
     </template>
-    
+
     <script setup>
     import { ref, onMounted, computed } from "vue";
     import "@/assets/guesser.css";
-    
-    let apiUrl = "https://api.jikan.moe/v4/anime/";
+
+    const apiUrl = "https://api.jikan.moe/v4/anime/";
+    let charactersUrl = "";
     const characters = ref([]);
     const currentCharacter = ref(null);
     const animeTitle = ref("");
     const userGuess = ref("");
     const message = ref("");
     const showSuggestions = ref(false);
-    
-    async function fetchCharacters() {
+
+    async function fetchAnime() {
       try {
         const randomIndex = Math.floor(Math.random() * 3000);
-        apiUrl = apiUrl + randomIndex;
+        charactersUrl = apiUrl + randomIndex;
         const response = await fetch(apiUrl);
         const data = await response.json();
         animeTitle.value = data.data.title;
-        apiUrl = apiUrl + "/characters/";
-        response = await fetch(apiUrl);
-        data = await response.json();
-        characters.value = data.data.filter((char) => char.character);
-        pickRandomCharacter();
+        fetchCharacters();
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
     }
-    
+
+    async function fetchCharacters() {
+        const newUrl = charactersUrl + "/characters/";
+        response = await fetch(apiUrl);
+        data = await response.json();
+        characters.value = data.data.filter((char) => char.character);
+        pickRandomCharacter();
+    }
+
     function pickRandomCharacter() {
       if (characters.value.length > 0) {
         const randomIndex = Math.floor(Math.random() * characters.value.length);
@@ -68,36 +73,35 @@
         userGuess.value = "";
       }
     }
-    
+
     function checkGuess() {
       if (!currentCharacter.value) return;
       const correctName = currentCharacter.value.character.name.toLowerCase();
       if (userGuess.value.toLowerCase() === correctName) {
         message.value = "¡Correcto! 🎉";
-        setTimeout(pickRandomCharacter, 2000); 
+        setTimeout(pickRandomCharacter, 2000);
       } else {
         message.value = "Incorrecto, intenta otra vez. ❌";
       }
       showSuggestions.value = false;
     }
-    
+
     const filteredSuggestions = computed(() => {
       if (!userGuess.value) return [];
       return characters.value
         .map((char) => char.character.name)
         .filter((name) => name.toLowerCase().includes(userGuess.value.toLowerCase()))
-        .slice(0, 5); 
+        .slice(0, 5);
     });
-    
+
     function selectSuggestion(name) {
       userGuess.value = name;
       showSuggestions.value = false;
     }
-    
-    onMounted(fetchCharacters);
+
+    onMounted(fetchAnime);
     </script>
-    
+
     <style scoped>
-    
+
     </style>
-    
