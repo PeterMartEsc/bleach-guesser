@@ -4,6 +4,12 @@
         <div class="bg-[#ccc]">
           <h1 class="text-black">Character Guesser</h1>
         </div>
+          <nav>
+                <RouterLink to="/">Home</RouterLink><br>
+                <RouterLink to="/anime">Adivina el anime</RouterLink><br>
+                <RouterLink to="/manga">Adivina el manga</RouterLink><br>
+                <RouterLink to="/character">Adivina el personaje</RouterLink>
+        </nav>
       </header>
       <br>
         <h1>🔍 Adivina el Personaje</h1>
@@ -81,7 +87,7 @@
     const filteredSuggestions = computed(() => {
       if (!userGuess.value) return [];
       return characters
-        .filter((name) => name.toLowerCase().includes(userGuess.value.toLowerCase()))
+        .filter((name) => name.toLowerCase().startsWith(userGuess.value.toLowerCase()))
         .slice(0, 5);
     });
 
