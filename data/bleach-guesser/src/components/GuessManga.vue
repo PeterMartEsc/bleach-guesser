@@ -2,7 +2,7 @@
     <div class="container">
       <header class="header">
             <div class="bg-[#ccc]">
-            <h1 class="text-black">Anime Guesser</h1>
+            <h1 class="text-black">Manga Guesser</h1>
             </div>
         </header>
         <br>
@@ -14,8 +14,14 @@
           <input
             v-model="userGuess"
             placeholder="Escribe el nombre..."
+            @input="showSuggestions = true"
             @keyup.enter="checkGuess"
           />
+          <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
+              <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
+                {{ name }}
+              </li>
+            </ul>
         </div>
         <br>
         <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
@@ -31,7 +37,8 @@
 
     const apiUrl = "https://api.jikan.moe/v4/random/manga";
     const images = ref("");
-    const titles = ref("");
+    const title = ref("");
+    var titles = [""];
 
     const userGuess = ref("");
     const message = ref("");
@@ -41,33 +48,43 @@
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        titles.value = data.data.title;
+        title.value = data.data.title;
         images.value = data.data.images.jpg.large_image_url;
 
         message.value = "";
         userGuess.value = "";
-        console.log(titles.value)
+        titles.push(title.value);
+        fetchMangas()
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
     }
 
+    async function fetchMangas () {
+      for (let i = 0; i < 30; i++) {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        titles.push(data.data.title);
+      }
+      console.log(titles);
+    }
+
     function checkGuess() {
-      if (!titles.value) return;
-      const correctName = titles.value.toLowerCase();
+      if (!title.value) return;
+      const correctName = title.value.toLowerCase();
       if (userGuess.value.toLowerCase() === correctName) {
         message.value = "¡Correcto! 🎉";
-        setTimeout(fetchRandomAnime, 2000);
+        titles = [];
+        setTimeout(fetchRandomManga, 2000);
       } else {
         message.value = "Incorrecto, intenta otra vez. ❌";
       }
       showSuggestions.value = false;
     }
 
-  /**   const filteredSuggestions = computed(() => {
+    const filteredSuggestions = computed(() => {
       if (!userGuess.value) return [];
-      return characters.value
-        .map((char) => char.character.name)
+      return titles
         .filter((name) => name.toLowerCase().includes(userGuess.value.toLowerCase()))
         .slice(0, 5);
     });
@@ -76,7 +93,7 @@
       userGuess.value = name;
       showSuggestions.value = false;
     }
-  */
+
     onMounted(fetchRandomManga);
     </script>
 
