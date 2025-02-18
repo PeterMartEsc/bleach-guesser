@@ -7,7 +7,7 @@ import GuessCharacter from "@/components/GuessCharacter.vue"
 </script>
 
 <template>
-  <GuessAnime/>
+  <GuessManga/>
 </template>
 
 

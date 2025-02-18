@@ -39,6 +39,7 @@
     const images = ref("");
     const title = ref("");
     var titles = [""];
+    var genres = [];
 
     const userGuess = ref("");
     const message = ref("");
@@ -49,14 +50,27 @@
         const response = await fetch(apiUrl);
         const data = await response.json();
         title.value = data.data.title;
-        images.value = data.data.images.jpg.large_image_url;
+        data.data.genres.map((genero) => genres.push(genero.name));
+        filter(data);
 
         message.value = "";
         userGuess.value = "";
         titles.push(title.value);
+        console.log(genres);
         fetchMangas()
       } catch (error) {
         console.error("Error fetching characters:", error);
+      }
+    }
+
+    function filter (data) {
+      if (genres.includes("Hentai") || genres.includes("Erotica") || genres.includes("Boys Love") || genres.includes("Ecchi")){
+        console.log(genres)
+        genres = [];
+        fetchRandomManga();
+        return;
+      } else {
+        images.value = data.data.images.jpg.large_image_url;
       }
     }
 
