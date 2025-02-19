@@ -96,7 +96,6 @@
       const response = await fetch(apiUrl);
       const data = await response.json();
       title.value = data.data.title;
-      images.value = data.data.images.jpg.large_image_url;
 
       titles = [];
       message.value = "";

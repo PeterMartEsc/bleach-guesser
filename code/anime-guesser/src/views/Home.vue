@@ -57,7 +57,6 @@
       const response = await fetch(apiUrl);
       const data = await response.json();
       titles.value = data.data.title;
-      images.value = data.data.images.jpg.large_image_url;
       data.data.genres.map((genero) => genres.push(genero.name));
       filter(data);
       console.log(titles.value)
