@@ -27,7 +27,7 @@
       <div class="w-2xl h-[500px] justify-self-center">
         <img :src="images" class="justify-self-center object-cover min-h-full border-2 p-2 max-w-full max-h-full"/>
       </div>
-      <p class="text-white text-center mt-4">{{ titles }}</p>
+      <p class="text-black text-center mt-4">{{ titles }}</p>
     </div>
     <p v-else>Cargando...</p>
   </section>

@@ -32,7 +32,6 @@ input {
   position: absolute;
   /**background: #282C59;*/
   /**border: 1px solid #ddd;*/
-  width: 100%;
   max-height: 150px;
   overflow-y: auto;
   list-style: none;
