@@ -4,6 +4,7 @@
       <h1 class="text-black text-3xl font-serif font-bold text-center">Anime Guesser</h1>
     </div>
 
+    <!-- Router nav -->
     <nav class="flex space-x-4 justify-center">
       <RouterLink to="/">
         <p class="text-blue-800">Home</p>
@@ -32,12 +33,22 @@
 </template>
 
 <script setup>
+  /**
+   * Componente Home con el router
+   * @name Home
+   * @description Este componente muestra un anime random y sirve como home de la aplicación
+   */
   import { ref, onMounted, computed } from "vue";
   import "@/assets/guesser.css";
 
   const apiUrl = "https://api.jikan.moe/v4/random/anime";
   const images = ref("");
   const titles = ref("");
+
+  /**
+   * Función que obtiene un anime random de la api de MyAnimeList
+   * @method fetchRandomAnime
+   */
 
   async function fetchRandomAnime() {
     try {

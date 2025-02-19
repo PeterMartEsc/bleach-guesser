@@ -7,6 +7,7 @@ import GuessCharacter from "@/components/GuessCharacter.vue"
 </script>
 
 <template>
+  <!-- Carga el Router View  -->
   <RouterView/>
 </template>
 

@@ -95,3 +95,71 @@ Finalmente, hemos organizado todos los modos de juego en un router para poder ac
 - Acertar Manga
 
 ### VueDoc <a name="vdoc"></a>
+
+A continuación se explicará como se generó la documentación con __VueDoc__. 
+
+Primero tenemos que instalar el __Styleguidist__:
+
+```bash
+    vue add styleguidist
+```
+
+Luego hay que comentar el código siguiendo la siguiente sintaxis:
+
+- Componentes
+
+```code
+    /**
+     * Explicación
+     * @name nombreDelComponente
+     * @description descripcción del componente
+     */
+```
+
+- Métodos
+
+```code
+    /**
+     * Explicación
+     * @method nombreDeLaFuncion
+     */
+```
+
+- Parámetro
+
+```code
+    /**
+     * Explicación
+     * @param {type} nombreDeLaFuncion
+     */
+```
+
+- Elemento del Template
+
+```html
+    <!-- Explicación del elemento -->
+```
+
+- Estilos
+
+```css
+    /* Estilos específicos para este componente */
+```
+
+A continuación, configuramos el scrpit para generar la documentación:
+
+```json
+    "scripts": {
+        "doc": "vuedoc generate src"
+    }
+```
+
+Esto indicará a __VueDoc__ que debe generar la documentación a partir del código fuente en la carpeta src.
+
+Finalmente, solo queda generar la documentación con:
+
+```bash
+    npm run doc
+```
+
+Una vez generada la __documentación__, se almacenará en una carpeta llamada docs. Podemos abrir el archivo `index.html` en el navegador para __ver la documentación generada__.
