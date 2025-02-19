@@ -10,8 +10,8 @@
     "dev": "vite",
     "format": "prettier --write src/",
     "preview": "vite preview",
-    "styleguide": "vue-cli-service styleguidist",
-    "styleguide:build": "vue-cli-service styleguidist:build",
+    "styleguide": "vue-styleguidist server",
+    "styleguide:build": "vue-styleguidist build",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
