@@ -21,10 +21,12 @@
     </nav>
   </section>
 
-  <section class="flex-col pt-50">
+  <section class="fixed top-25 left-0 w-full mt-[70px]">
     <!-- Contenedor de imagen centrado -->
-    <div v-if="titles" class=" bg-blue-800">
-      <img :src="images" class="justify-self-center"/>
+    <div v-if="titles" class="w-full ">
+      <div class="w-2xl h-[500px] justify-self-center">
+        <img :src="images" class="justify-self-center object-cover min-h-full border-2 p-2 bg-red-600 max-w-full max-h-full"/>
+      </div>
       <p class="text-white text-center mt-4">{{ titles }}</p>
     </div>
     <p v-else>Cargando...</p>
