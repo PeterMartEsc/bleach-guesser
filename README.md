@@ -156,10 +156,20 @@ A continuación, configuramos el scrpit para generar la documentación:
 
 Esto indicará a __VueDoc__ que debe generar la documentación a partir del código fuente en la carpeta src.
 
-Finalmente, solo queda generar la documentación con:
+También debemos de crear una carpeta `styleguide` con un `config.js` dentro. Este archivo es donde podemos personalizar la configuración de Vue Styleguidist.
+
+```javascript
+    module.exports = {
+        title: 'Documentación Trabajo Final DAD',
+        views: 'src/views/**/*.vue',
+        components: 'src/components/**/*.vue',
+    };
+```
+
+Finalmente, solo queda generar la __documentación__ con:
 
 ```bash
-    npm run doc
+    npm run styleguide
 ```
 
 Una vez generada la __documentación__, se almacenará en una carpeta llamada docs. Podemos abrir el archivo `index.html` en el navegador para __ver la documentación generada__.
