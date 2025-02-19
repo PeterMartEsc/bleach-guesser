@@ -23,30 +23,34 @@
   </section>
   <br>
         <!--<h1>🔍 Adivina el Personaje</h1>-->
-  <div class="container">
-    <div v-if="characterName" class="character-container">
-      <img :src="characterImage" alt="Personaje" class="character-image"/>
+  <section class="fixed top-25 left-0 w-full mt-[70px]">
+    <div v-if="characterName" class="w-full">
+      <div class="w-2xl h-[500px] justify-self-center">
+        <img :src="characterImage" alt="Personaje" class="justify-self-center object-cover min-h-full border-2 p-2 max-w-full max-h-full"/>
+      </div>
+
+      <div class="justify-self-center pt-4">
+        <input
+          v-model="userGuess"
+          placeholder="Escribe el nombre..."
+          @input="showSuggestions = true"
+          @keyup.enter="checkGuess"
+        />
+        <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
+          <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
+            {{ name }}
+          </li>
+        </ul>
+
+        <br>
+        <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
+        <p :class="{ correct: message.includes('Correcto'), incorrect: message.includes('Incorrecto') }">
+          {{ message }}
+        </p>
+      </div>
     </div>
     <p v-else>Cargando personajes...</p>
-    <div class="input-container">
-      <input
-        v-model="userGuess"
-        placeholder="Escribe el nombre..."
-        @input="showSuggestions = true"
-        @keyup.enter="checkGuess"
-      />
-      <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
-        <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
-          {{ name }}
-        </li>
-      </ul>
-    </div>
-    <br>
-    <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
-    <p :class="{ correct: message.includes('Correcto'), incorrect: message.includes('Incorrecto') }">
-      {{ message }}
-    </p>
-  </div>
+  </section>
 </template>
 
 <script setup>
