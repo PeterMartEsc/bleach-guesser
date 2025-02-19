@@ -21,11 +21,11 @@
     </nav>
   </section>
 
-  <section class="fixed top-25 left-0 w-full">
+  <section class="w-full">
     <!-- Contenedor de imagen centrado -->
     <div v-if="titles" class="w-full pt-[20px]">
       <div class="w-2xl h-[500px] justify-self-center">
-        <img :src="images" class="justify-self-center object-cover min-h-full border-2 p-2  max-w-full max-h-full"/>
+        <img :src="images" class="justify-self-center object-cover min-h-full border-2 p-2 max-w-full max-h-full"/>
       </div>
       <p class="text-white text-center mt-4">{{ titles }}</p>
     </div>

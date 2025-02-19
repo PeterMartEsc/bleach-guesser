@@ -23,7 +23,7 @@
 
   <br>
 
-  <section class="fixed top-25 left-0 w-full">
+  <section class="w-full">
     <!-- Imagen del anime -->
     <div v-if="titles" class="w-full pt-[20px]">
       <div class="w-2xl h-[500px] justify-self-center">
@@ -119,7 +119,7 @@
     for (let i = 0; i < 30; i++) {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      
+
       titles.push(data.data.title);
     }
     console.log(titles);
