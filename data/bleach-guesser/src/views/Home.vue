@@ -1,11 +1,11 @@
 <template>
-  <section class="header fixed top-0 left-0 bg-gray-400 w-full p-4 z-10">
+  <section class="fixed top-0 left-0 bg-gray-400 w-full p-4 z-10">
     <div class="mb-10">
       <h1 class="text-black text-3xl font-serif font-bold text-center">Anime Guesser</h1>
     </div>
 
     <!-- Router nav -->
-    <nav class="flex space-x-4 justify-center">
+    <nav class="flex space-x-4 justify-between mt-5 font-serif">
       <RouterLink to="/">
         <p class="text-blue-800">Home</p>
       </RouterLink>
