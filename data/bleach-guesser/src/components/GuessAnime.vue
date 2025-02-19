@@ -1,43 +1,54 @@
 <template>
-    <div class="container">
-      <header class="header">
-            <div class="bg-[#ccc]">
-            <h1 class="text-black">Anime Guesser</h1>
-            </div>
-            <nav>
-                <RouterLink to="/">Home</RouterLink><br>
-                <RouterLink to="/anime">Adivina el anime</RouterLink><br>
-                <RouterLink to="/manga">Adivina el manga</RouterLink><br>
-                <RouterLink to="/character">Adivina el personaje</RouterLink>
-            </nav>
-        </header>
-        <br>
-        <!-- Imagen del anime -->
-        <div v-if="titles" class="character-container">
-            <img :src="images" class="character-image"/>
+      <section class="header fixed top-0 left-0 bg-gray-400 w-full p-4 z-10">
+        <div class="mb-10">
+          <h1 class="text-black text-3xl font-serif font-bold text-center">Anime Guesser</h1>
         </div>
-        <p v-else>Cargando personajes...</p>
 
-        <!-- Input del anime -->
-        <div class="input-container">
-          <input
-            v-model="userGuess"
-            placeholder="Escribe el nombre..."
-            @input="showSuggestions = true"
-            @keyup.enter="checkGuess"
-          />
-          <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
-              <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
-                {{ name }}
-              </li>
-            </ul>
-        </div>
+        <!-- Router nav -->
+        <nav class="flex space-x-4 justify-center">
+          <RouterLink to="/">
+            <p class="text-blue-800">Home</p>
+          </RouterLink>
+          <RouterLink to="/anime">
+            <p class="text-blue-800">Adivina el anime</p>
+          </RouterLink>
+          <RouterLink to="/manga">
+            <p class="text-blue-800">Adivina el manga</p>
+          </RouterLink>
+          <RouterLink to="/character">
+            <p class="text-blue-800">Adivina el personaje</p>
+          </RouterLink>
+        </nav>
+      </section>
         <br>
-        <!-- Botón de adivinar -->
-        <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
-        <p :class="{ correct: message.includes('Correcto'), incorrect: message.includes('Incorrecto') }">
-          {{ message }}
-        </p>
+
+    <div class="container">
+      <!-- Imagen del anime -->
+      <div v-if="titles" class="character-container">
+          <img :src="images" class="character-image"/>
+      </div>
+      <p v-else>Cargando personajes...</p>
+
+      <!-- Input del anime -->
+      <div class="input-container">
+        <input
+          v-model="userGuess"
+          placeholder="Escribe el nombre..."
+          @input="showSuggestions = true"
+          @keyup.enter="checkGuess"
+        />
+        <ul v-if="showSuggestions && filteredSuggestions.length" class="suggestions bg-[#e9e9e9] z-10 border-1 border-[#ddd]">
+          <li v-for="(name, index) in filteredSuggestions" :key="index" @click="selectSuggestion(name)" class="text-black">
+            {{ name }}
+          </li>
+        </ul>
+      </div>
+      <br>
+      <!-- Botón de adivinar -->
+      <button @click="checkGuess" class="bg-[#ccc] text-black">Adivinar</button>
+      <p :class="{ correct: message.includes('Correcto'), incorrect: message.includes('Incorrecto') }">
+        {{ message }}
+      </p>
     </div>
 </template>
 
