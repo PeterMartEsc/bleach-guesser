@@ -80,6 +80,7 @@
   const images = ref("");
   const title = ref("");
   var titles = [];
+  var genres = [];
 
   const userGuess = ref("");
   const message = ref("");
@@ -102,6 +103,8 @@
       userGuess.value = "";
       console.log(title.value)
       titles.push(title.value);
+      data.data.genres.map((genero) => genres.push(genero.name));
+      filter(data);
       fetchAnimes();
     } catch (error) {
       console.error("Error fetching characters:", error);
@@ -116,10 +119,22 @@
     for (let i = 0; i < 30; i++) {
       const response = await fetch(apiUrl);
       const data = await response.json();
+      
       titles.push(data.data.title);
     }
     console.log(titles);
   }
+
+  function filter (data) {
+      if (genres.includes("Hentai") || genres.includes("Erotica") || genres.includes("Boys Love") || genres.includes("Ecchi")){
+        console.log(genres)
+        genres = [];
+        fetchRandomAnime();
+        return;
+      } else {
+        images.value = data.data.images.jpg.large_image_url;
+      }
+    }
 
 
   /**

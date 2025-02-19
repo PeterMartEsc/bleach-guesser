@@ -61,7 +61,6 @@
   const characterName = ref("");
   const characterImage = ref("");
   var characters = [];
-  const animeTitle = ref("");
   const userGuess = ref("");
   const message = ref("");
   const showSuggestions = ref(false);

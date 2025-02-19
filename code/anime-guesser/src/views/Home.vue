@@ -46,7 +46,7 @@
   const apiUrl = "https://api.jikan.moe/v4/random/anime";
   const images = ref("");
   const titles = ref("");
-
+  var genres = [];
   /**
    * Función que obtiene un anime random de la api de MyAnimeList
    * @method fetchRandomAnime
@@ -58,11 +58,24 @@
       const data = await response.json();
       titles.value = data.data.title;
       images.value = data.data.images.jpg.large_image_url;
+      data.data.genres.map((genero) => genres.push(genero.name));
+      filter(data);
       console.log(titles.value)
     } catch (error) {
       console.error("Error fetching characters:", error);
     }
   }
+
+  function filter (data) {
+      if (genres.includes("Hentai") || genres.includes("Erotica") || genres.includes("Boys Love") || genres.includes("Ecchi")){
+        console.log(genres)
+        genres = [];
+        fetchRandomAnime();
+        return;
+      } else {
+        images.value = data.data.images.jpg.large_image_url;
+      }
+    }
 
   onMounted(fetchRandomAnime);
 </script>
