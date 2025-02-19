@@ -1,4 +1,4 @@
-# Trabajo final: Bleach Guesser
+# Trabajo final: Anime-Guesser
 
 __Autores: Alejandro Tomás Pacheco Rodríguez, Melissa Ruiz González, Pedro Martín Escuela__
 
@@ -173,3 +173,12 @@ Una vez generada la __documentación__, se almacenará en una carpeta llamada do
 
 _Nota: por alguna razón, no nos genera correctamente la documentación_
 
+### EsLint
+
+Hemos incorporado el __ESLint__ al proyecto. Para usarlo hay que lanzar el comando:
+
+```bash
+    npx eslint
+```
+
+Esta implementación los que nos proporciona es un __corrector__, nos __devuelve__ por consola los __fallos__ que tenemos en el código, elementos definidos que no se usan, definiciones que falta, etc.
